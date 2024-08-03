@@ -19,11 +19,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/users")
-    public String createUser(@RequestBody User user) {
+    @PostMapping
+    public String userRegister(@RequestBody User user) {
         userService.createUser(user);
         return "User created";
     }
-
 
 }

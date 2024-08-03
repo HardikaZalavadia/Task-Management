@@ -20,7 +20,7 @@ public class AuthController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
 
         // Authenticate the user

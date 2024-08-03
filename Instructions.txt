@@ -1,0 +1,46 @@
+ Instructions to run the application locally.
+
+
+1.Go to postman
+    API - http://localhost:8080/user
+    post method -> name
+                   password
+
+2. To get JWT token
+    API - http://localhost:8080/auth/login
+    post method -> name
+                   password
+
+3. create task
+    API - http://localhost:8080/task
+    post method ->  title
+                    description
+                    status
+                    priority
+                    userId
+4. update task
+    API - http://localhost:8080/task/id
+    put method ->  title
+                   description
+                   status
+                   priority
+                   userId
+5.delete task
+    API - http://localhost:8080/task/id
+    delete method
+
+6. get task
+    API - http://localhost:8080/task
+    get method which return list of task
+
+7. filter task based on  status, priority, and due date.
+    API - http://localhost:8080/task/filter
+    get method
+
+8. search tasks by title or description
+    API - http://localhost:8080/task/search
+    get method
+
+
+
+
