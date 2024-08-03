@@ -1,6 +1,6 @@
 package dev.hardika.taskManagment.taskManagment.controller;
 
-import dev.hardika.taskManagment.taskManagment.Util.JwtUtil;
+import dev.hardika.taskManagment.taskManagment.Utility.JwtUtil;
 import dev.hardika.taskManagment.taskManagment.request.AuthRequest;
 import dev.hardika.taskManagment.taskManagment.response.AuthResponse;
 import org.springframework.beans.factory.annotation.Autowired;
