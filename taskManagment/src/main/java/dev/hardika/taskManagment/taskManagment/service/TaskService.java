@@ -8,6 +8,7 @@ import dev.hardika.taskManagment.taskManagment.response.TaskResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +18,17 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
+    public List<Task> findByUserId(Long userId) {
+        return taskRepository.findByUserId(userId);
+    }
+
     public TaskResponse createTask(TaskRequest task){
         Task taskEntity = new Task();
         taskEntity.setDescription(task.getDescription());
         taskEntity.setPriority(task.getPriority());
         taskEntity.setStatus(task.getStatus());
         taskEntity.setTitle(task.getTitle());
+        taskEntity.getUser().setId(task.getUserId());
 
         taskRepository.save(taskEntity);
         TaskResponse taskResponse = new TaskResponse();
@@ -53,6 +59,7 @@ public class TaskService {
         task1.setDescription(task.getDescription());
         task1.setPriority(task.getPriority());
         task1.setStatus(task.getStatus());
+        task1.getUser().setId(task.getUserId());
 
         taskRepository.save(task1);
 
@@ -66,5 +73,22 @@ public class TaskService {
 
     public void deleteTask(long id){
         taskRepository.deleteById(id);
+    }
+
+    public List<Task> searchTasks(Long userId, String query) {
+        return taskRepository.findByTitleContainingOrDescriptionContainingAndUserId(query, query, userId);
+    }
+
+
+    public List<Task> filterTasks(Long userId, String status, String priority, LocalDateTime dueDate) {
+        if (status != null && !status.isEmpty()) {
+            return taskRepository.findByStatusAndUserId(status, userId);
+        } else if (priority != null && !priority.isEmpty()) {
+            return taskRepository.findByPriorityAndUserId(priority, userId);
+        } else if (dueDate != null) {
+            return taskRepository.findByDueDateAndUserId(dueDate, userId);
+        } else {
+            return taskRepository.findByUserId(userId);
+        }
     }
 }

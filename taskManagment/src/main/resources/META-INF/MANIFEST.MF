@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: dev.hardika.taskManagment.taskManagment.TaskManagmentApplica
+ tion
+

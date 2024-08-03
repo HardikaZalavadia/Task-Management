@@ -12,4 +12,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByPriorityAndUserId(String priority, Long userId);
     List<Task> findByDueDateAndUserId(LocalDateTime dueDate, Long userId);
     List<Task> findByTitleContainingOrDescriptionContainingAndUserId(String title, String description, Long userId);
+    List<Task> findByTitleContaining(String title);
+    List<Task> findByDescriptionContaining(String description);
 }
