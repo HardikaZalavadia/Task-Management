@@ -24,4 +24,6 @@ public class UserController {
         userService.createUser(user);
         return "User created";
     }
+
+
 }

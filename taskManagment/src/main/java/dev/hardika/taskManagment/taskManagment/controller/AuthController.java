@@ -21,7 +21,7 @@ public class AuthController {
     private UserDetailsService userDetailsService;
 
     @PostMapping("/authenticate")
-    public AuthResponse createToken(@RequestBody AuthRequest request) {
+    public AuthResponse login(@RequestBody AuthRequest request) {
 
         // Authenticate the user
         userDetailsService.loadUserByUsername(request.getUserName());
